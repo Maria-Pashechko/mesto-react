@@ -1,0 +1,20 @@
+.profile__data {
+  width: 100%;
+  max-width: 336px;
+  display: grid;
+  grid-template-columns: 6.5fr 0.5fr;
+  column-gap: 18px;
+  row-gap: 8px;
+  margin-right: auto;
+  margin-left: 30px;
+}
+
+@media screen and (max-width: 1023px) {
+  .profile__data {
+    max-width: 282px;
+    padding: 25px 0 35px;
+    grid-template-columns: 1fr 6.5fr 1fr;
+    column-gap: 10px;
+    margin-left: 0;
+  }
+}

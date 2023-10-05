@@ -1,0 +1,17 @@
+.header {
+  max-width: 880px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 45px 0 0;
+  border-bottom: 1px solid rgba(84, 84, 84, .7); /*по макету color HEX #545454 = RGBA 84 84 84*/ 
+}
+
+@media screen and (max-width: 767px) {
+  .header {
+    max-width: 100%;
+    padding: 28px 0 0;
+  }
+}

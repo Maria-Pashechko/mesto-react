@@ -1,0 +1,27 @@
+.profile__profession {
+  margin: 0;
+  color: #fff;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 22px; /*высота строки по скаченному макету normal, в онлайн режиме - указаны px */
+  grid-row: 2;
+  grid-column: span 3;
+  align-self: start;
+  white-space: nowrap; /* Текст не переносится на новую строку*/
+  overflow: hidden; /* Обрезаем всё, что за пределами блока */
+  text-overflow: ellipsis; /* многоточие */
+}
+
+@media screen and (max-width: 1023px) {
+  .profile__profession {
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .profile__profession {
+    font-size: 14px;
+    line-height: 17px;
+  }
+}
