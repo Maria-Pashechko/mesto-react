@@ -1,0 +1,37 @@
+import React from 'react';
+
+function PopupWithForm({name, title, children, btnType, btnText, isOpen, onClose}) { 
+  
+  // общая разметка для попапов с формами
+  return (
+    <div className={`popup popup_type_${name} ${isOpen ? 'popup_opened' : '' }`}>      
+      <div className="popup__container">
+
+        <button type="button"
+          className="button popup__close-btn"
+          onClick={onClose}
+          aria-label="Закрыть">
+        </button>
+
+        <form 
+          className="popup__form" 
+          method="get" 
+          name={`${name}-form`} 
+          noValidate>
+          <h3 className="popup__title">{`${title}`}</h3>
+
+          {children}      
+
+          <button type="submit"
+            className={`button popup__submit-btn popup__submit-btn_type_${btnType}`}
+            aria-label={`${btnText}`}>
+            {`${btnText}`}
+          </button>
+        </form>
+
+      </div>
+    </div>  
+  )
+}
+
+export default PopupWithForm;
