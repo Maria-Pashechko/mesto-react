@@ -10,6 +10,8 @@ function App() {
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = React.useState(false);
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false);
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(false);
+  const [isImgOpen, setIsImgOpen] = React.useState(false)
+  const [selectedCard, setSelectedCard] = React.useState({})
   
 
   function handleEditProfileClick() {
@@ -31,9 +33,15 @@ function App() {
     setIsEditProfilePopupOpen(false);
     setIsAddPlacePopupOpen(false);
     setIsEditAvatarPopupOpen(false);
+    setIsImgOpen(false);
     console.log("закрытие попапа")
   }
 
+  function onCardClick(card) {
+    setIsImgOpen(true);
+    setSelectedCard(card)
+  }
+  
   return (
     <div className = "App">
       <div className = "page">
@@ -42,6 +50,7 @@ function App() {
           onEditProfile={handleEditProfileClick} // isOpen=isEditProfilePopupOpen
           onAddPlace={handleAddPlaceClick} // isOpen=isAddPlacePopupOpen
           onEditAvatar={handleEditAvatarClick} // isOpen=isEditAvatarPopupOpen
+          onCardClick = {onCardClick}
           />
         <Footer />
       </div>
@@ -53,7 +62,7 @@ function App() {
         children = {
           <div className="popup__info">
             <label className="popup__label">
-              <input id="avatarlink" className="popup__input popup__input_avatar_link" 
+              <input id ="avatarlink" className="popup__input popup__input_avatar_link" 
                 type="url" name="link" placeholder="Ссылка на изображение" 
                 autoComplete="off" required
               />
@@ -61,8 +70,7 @@ function App() {
             </label>
           </div>       
         }
-        btnType={"save"}
-        btnText={"Сохранить"}
+        btnText = {"Сохранить"}
         isOpen = {isEditAvatarPopupOpen}
         onClose = {closeAllPopups}
       />
@@ -89,8 +97,7 @@ function App() {
             </label>
           </div>
         }
-        btnType={"save"}
-        btnText={"Сохранить"}
+        btnText = {"Сохранить"}
         isOpen = {isEditProfilePopupOpen}
         onClose = {closeAllPopups}
       />
@@ -118,8 +125,7 @@ function App() {
               </label>
           </div>
         }
-        btnType={"create"}
-        btnText={"Создать"}
+        btnText = {"Создать"}
         isOpen = {isAddPlacePopupOpen}
         onClose = {closeAllPopups}
       />
@@ -128,8 +134,7 @@ function App() {
       <PopupWithForm
         name = {"confirm"}
         title = {"Вы уверены?"}
-        btnType={"yes"}
-        btnText={"Да"}
+        btnText = {"Да"}
         // isOpen = {isAddPlacePopupOpen} открытие по нажатию на Х попапа с формой
         onClose = {closeAllPopups}
       />  
@@ -144,35 +149,12 @@ function App() {
         </div>
       </div> */}
 
-      <ImagePopup />
-      {/* <!--  попап просмотра картинки -->
-      <div className="popup popup_type_open-img"> { /*popup_opened *
-        <div className="popup__img-container">
-          <button type="button" className="button popup__close-btn" aria-label="Закрыть"></button>
-          <figure className="popup__figure">
-            <img className="popup__img" src="#" alt=""/>
-            <figcaption className="popup__img-caption"></figcaption>
-          </figure>
-        </div>
-      </div> */}
-    
-      
-      {/* <!-- template не отображается на странице HTML --> */}
-      {/* <template id="card-template" className="card-template_type_default">
-        <li className="card">
-          <button type="button" className="button card__img-btn" aria-label="Открыть фотографию для просмотра">
-            <img className="card__img" src="#" alt=""/>
-          </button>
-          <button type="button" className="button card__trash-btn" aria-label="Удалить фотографию"></button>
-          <div className="card__caption">
-            <h2 className="card__text"></h2>
-            <div className="card__like-container">  
-              <button type="button" className="button card__like-btn" aria-label="Поставить или отменить лайк"></button>
-              <span className="card__like-counter">0</span>
-            </div>
-          </div>
-        </li>
-      </template> */}
+      {/* попап просмотра картинки */}
+      <ImagePopup 
+        card = {selectedCard}
+        isOpen = {isImgOpen}
+        onClose = {closeAllPopups}
+      />               
     </div>
   );
 }

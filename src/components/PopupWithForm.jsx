@@ -1,6 +1,6 @@
 import React from 'react';
 
-function PopupWithForm({name, title, children, btnType, btnText, isOpen, onClose}) { 
+function PopupWithForm({name, title, children, btnText, isOpen, onClose}) { 
   
   // общая разметка для попапов с формами
   return (
@@ -20,10 +20,10 @@ function PopupWithForm({name, title, children, btnType, btnText, isOpen, onClose
           noValidate>
           <h3 className="popup__title">{`${title}`}</h3>
 
-          {children}      
+          {children}
 
           <button type="submit"
-            className={`button popup__submit-btn popup__submit-btn_type_${btnType}`}
+            className="button popup__submit-btn"
             aria-label={`${btnText}`}>
             {`${btnText}`}
           </button>
