@@ -16,17 +16,14 @@ function App() {
 
   function handleEditProfileClick() {
     setIsEditProfilePopupOpen(true);
-    console.log("открытие попапа профиля")
   }
 
   function handleAddPlaceClick() {
     setIsAddPlacePopupOpen(true);
-    console.log("открытие попапа карточки")
   }
 
   function handleEditAvatarClick() {    
     setIsEditAvatarPopupOpen(true);
-    console.log("открытие попапа аватара")
   }
 
   function closeAllPopups() {
@@ -34,7 +31,6 @@ function App() {
     setIsAddPlacePopupOpen(false);
     setIsEditAvatarPopupOpen(false);
     setIsImgOpen(false);
-    console.log("закрытие попапа")
   }
 
   function onCardClick(card) {
@@ -51,7 +47,7 @@ function App() {
           onAddPlace={handleAddPlaceClick} // isOpen=isAddPlacePopupOpen
           onEditAvatar={handleEditAvatarClick} // isOpen=isEditAvatarPopupOpen
           onCardClick = {onCardClick}
-          />
+        />
         <Footer />
       </div>
 
@@ -130,6 +126,13 @@ function App() {
         onClose = {closeAllPopups}
       />
 
+      {/* попап просмотра картинки */}
+      <ImagePopup 
+        card = {selectedCard}
+        isOpen = {isImgOpen}
+        onClose = {closeAllPopups}
+      />
+
       {/* попап подтверждения действия */}
       <PopupWithForm
         name = {"confirm"}
@@ -147,14 +150,7 @@ function App() {
             <button type="submit" className="button popup__submit-btn">Да</button>
           </form>
         </div>
-      </div> */}
-
-      {/* попап просмотра картинки */}
-      <ImagePopup 
-        card = {selectedCard}
-        isOpen = {isImgOpen}
-        onClose = {closeAllPopups}
-      />               
+      </div> */}      
     </div>
   );
 }

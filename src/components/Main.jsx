@@ -27,6 +27,7 @@ function Main({onEditProfile, onAddPlace, onEditAvatar, onCardClick}) {
 
   return (
     <main className="content">
+      
       <section className="profile">
         <button type="button"
           className="button profile__avatar-btn"
