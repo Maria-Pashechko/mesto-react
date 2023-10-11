@@ -9,7 +9,7 @@ function Card(props) { //{card. link, name, likes; onCardClick}
   return (
     <li className="card">
       <button type="button" className="button card__img-btn" 
-          style={{ backgroundImage: `url(${props.card.link})` }}
+          style={{ backgroundImage: `url("${props.card.link}")` }}
           aria-label="Открыть фотографию для просмотра"
           onClick={handleCardClick}> 
       </button>

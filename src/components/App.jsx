@@ -39,7 +39,7 @@ function App() {
   }
   
   return (
-    <div className = "App">
+    <>
       <div className = "page">
         <Header />
         <Main
@@ -151,7 +151,7 @@ function App() {
           </form>
         </div>
       </div> */}      
-    </div>
+    </>
   );
 }
 
