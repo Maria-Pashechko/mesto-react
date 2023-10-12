@@ -5,6 +5,9 @@ import Main from './Main';
 import Footer from './Footer';
 import PopupWithForm from './PopupWithForm';
 import ImagePopup from './ImagePopup';
+import PopupWithFormChildAvatar from './PopupWithFormChildAvatar';
+import PopupWithFormChildProfile from './PopupWithFormChildProfile';
+import PopupWithFormChildCardAdd from './PopupWithFormChildCardAdd';
 
 function App() {
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = React.useState(false);
@@ -55,16 +58,8 @@ function App() {
       <PopupWithForm
         name = {"avatar"}
         title = {"Обновить аватар"}
-        children = {
-          <div className="popup__info">
-            <label className="popup__label">
-              <input id ="avatarlink" className="popup__input popup__input_avatar_link" 
-                type="url" name="link" placeholder="Ссылка на изображение" 
-                autoComplete="off" required
-              />
-              <span className="popup__input-error avatarlink-error"></span>
-            </label>
-          </div>       
+        child = {
+          <PopupWithFormChildAvatar />
         }
         btnText = {"Сохранить"}
         isOpen = {isEditAvatarPopupOpen}
@@ -75,23 +70,8 @@ function App() {
       <PopupWithForm
         name = {"profile"}
         title = {"Редактировать профиль"}
-        children = {
-          <div className="popup__info">
-            <label className="popup__label">
-              <input id="username" className="popup__input popup__input_field_name" 
-                type="text" name="name" placeholder="Имя"
-                autoComplete="off" minLength="2" maxLength="40" required
-              />
-              <span className="popup__input-error username-error"></span>
-            </label>
-            <label className="popup__label">
-              <input id="userprofession" className="popup__input popup__input_field_profession"
-                type="text" name="about" placeholder="О себе"
-                autoComplete="off" minLength="2" maxLength="200" required
-              />
-              <span className="popup__input-error userprofession-error"></span>
-            </label>
-          </div>
+        child = {
+          <PopupWithFormChildProfile />
         }
         btnText = {"Сохранить"}
         isOpen = {isEditProfilePopupOpen}
@@ -102,24 +82,8 @@ function App() {
       <PopupWithForm
         name = {"card-add"}
         title = {"Новое место"}
-        children = {
-          <div className="popup__info">            
-            <label className="popup__label">
-              <input id="cardname" className="popup__input popup__input_card_name"
-                type="text" name="name" placeholder="Название"
-                autoComplete="off" minLength="2" maxLength="30" required
-              />
-              <span className="popup__input-error cardname-error"></span>
-            </label>
-
-            <label className="popup__label">
-                <input id="cardlink" className="popup__input popup__input_card_link"
-                  type="url" name="link" placeholder="Ссылка на картинку"
-                  autoComplete="off" required
-                />
-                <span className="popup__input-error cardlink-error"></span>
-              </label>
-          </div>
+        child = {
+          <PopupWithFormChildCardAdd />
         }
         btnText = {"Создать"}
         isOpen = {isAddPlacePopupOpen}
@@ -138,19 +102,10 @@ function App() {
         name = {"confirm"}
         title = {"Вы уверены?"}
         btnText = {"Да"}
-        // isOpen = {isAddPlacePopupOpen} открытие по нажатию на Х попапа с формой
+        // isOpen = {isConfirmPopupOpen} открытие по клику на корзину карточки
         onClose = {closeAllPopups}
-      />  
-      {/* <div className="popup popup_type_confirm">
-        <div className="popup__container">
-          <button type="button" className="button popup__close-btn" aria-label="Закрыть"></button>
-          <form className="popup__form" method="get" name="confirm-form" noValidate>
-            <h3 className="popup__title">Вы уверены?</h3>
-
-            <button type="submit" className="button popup__submit-btn">Да</button>
-          </form>
-        </div>
-      </div> */}      
+        child ={null}
+      />     
     </>
   );
 }

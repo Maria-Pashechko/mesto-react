@@ -1,8 +1,13 @@
 import React from 'react';
 
-function PopupWithForm({name, title, children, btnText, isOpen, onClose}) { 
+function PopupWithForm({name, title, child, btnText, isOpen, onClose}) { 
   
-  // общая разметка для попапов с формами
+  /** общая разметка для попапов с формами
+   *  
+   * Блок div.popup__info отсутствует в попапе подтверждения удаления карточки
+   * т.о. он не общий для всех попапов с формой
+   * поэтому не вынесен здесь
+  */
   return (
     <div className={`popup popup_type_${name} ${isOpen ? 'popup_opened' : '' }`}>      
       <div className="popup__container">
@@ -18,14 +23,14 @@ function PopupWithForm({name, title, children, btnText, isOpen, onClose}) {
           method="get" 
           name={`${name}-form`} 
           noValidate>
-          <h3 className="popup__title">{`${title}`}</h3>
+          <h3 className="popup__title">{title}</h3>
 
-          {children}
+          {child}
 
           <button type="submit"
             className="button popup__submit-btn"
-            aria-label={`${btnText}`}>
-            {`${btnText}`}
+            aria-label={btnText}>
+            {btnText}
           </button>
         </form>
 
