@@ -5,9 +5,6 @@ import Main from './Main';
 import Footer from './Footer';
 import PopupWithForm from './PopupWithForm';
 import ImagePopup from './ImagePopup';
-import PopupWithFormChildAvatar from './PopupWithFormChildAvatar';
-import PopupWithFormChildProfile from './PopupWithFormChildProfile';
-import PopupWithFormChildCardAdd from './PopupWithFormChildCardAdd';
 
 function App() {
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = React.useState(false);
@@ -54,41 +51,93 @@ function App() {
         <Footer />
       </div>
 
+      {/** Благодарю за подробное объяснение с этим моментом! 
+         * Буквально разжевали)
+         * Надеюсь, теперь верно уяснила)
+         * 
+         * после зачёта - удалю все лишние комментарии)
+         */}
+
       {/* попап обновления аватара */}
       <PopupWithForm
         name = {"avatar"}
         title = {"Обновить аватар"}
-        child = {
-          <PopupWithFormChildAvatar />
-        }
         btnText = {"Сохранить"}
         isOpen = {isEditAvatarPopupOpen}
         onClose = {closeAllPopups}
-      />
+      >
+        <div className="popup__info">
+          <label className="popup__label">
+            <input id ="avatarlink"
+              className="popup__input popup__input_avatar_link" 
+              type="url" name="link"
+              placeholder="Ссылка на изображение" 
+              autoComplete="off"
+              required
+            />
+            <span className="popup__input-error avatarlink-error"></span>
+          </label>
+        </div>               
+      </PopupWithForm>
 
       {/* попап редактирования профиля */}
       <PopupWithForm
         name = {"profile"}
         title = {"Редактировать профиль"}
-        child = {
-          <PopupWithFormChildProfile />
-        }
         btnText = {"Сохранить"}
         isOpen = {isEditProfilePopupOpen}
         onClose = {closeAllPopups}
-      />
+      >
+        <div className="popup__info">
+          <label className="popup__label">
+            <input id="username"
+              className="popup__input popup__input_field_name" 
+              type="text" name="name"
+              placeholder="Имя" autoComplete="off"
+              minLength="2" maxLength="40"
+              required
+            />
+            <span className="popup__input-error username-error"></span>
+          </label>
+          <label className="popup__label">
+            <input id="userprofession"
+              className="popup__input popup__input_field_profession"
+              type="text" name="about"
+              placeholder="О себе" autoComplete="off"
+              minLength="2" maxLength="200"
+              required
+            />
+            <span className="popup__input-error userprofession-error"></span>
+          </label>
+        </div>
+      </PopupWithForm>
 
       {/* попап добавления карточки фотографии */}
       <PopupWithForm
         name = {"card-add"}
         title = {"Новое место"}
-        child = {
-          <PopupWithFormChildCardAdd />
-        }
         btnText = {"Создать"}
         isOpen = {isAddPlacePopupOpen}
         onClose = {closeAllPopups}
-      />
+      >
+        <div className="popup__info">            
+          <label className="popup__label">
+            <input id="cardname" className="popup__input popup__input_card_name"
+              type="text" name="name" placeholder="Название"
+              autoComplete="off" minLength="2" maxLength="30" required
+            />
+            <span className="popup__input-error cardname-error"></span>
+          </label>
+
+          <label className="popup__label">
+              <input id="cardlink" className="popup__input popup__input_card_link"
+                type="url" name="link" placeholder="Ссылка на картинку"
+                autoComplete="off" required
+              />
+              <span className="popup__input-error cardlink-error"></span>
+            </label>
+        </div>        
+      </PopupWithForm>
 
       {/* попап просмотра картинки */}
       <ImagePopup 
@@ -104,7 +153,7 @@ function App() {
         btnText = {"Да"}
         // isOpen = {isConfirmPopupOpen} открытие по клику на корзину карточки
         onClose = {closeAllPopups}
-        child ={null}
+        child = {null}
       />     
     </>
   );
