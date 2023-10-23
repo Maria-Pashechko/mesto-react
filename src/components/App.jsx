@@ -51,13 +51,6 @@ function App() {
         <Footer />
       </div>
 
-      {/** Благодарю за подробное объяснение с этим моментом! 
-         * Буквально разжевали)
-         * Надеюсь, теперь верно уяснила)
-         * 
-         * после зачёта - удалю все лишние комментарии)
-         */}
-
       {/* попап обновления аватара */}
       <PopupWithForm
         name = {"avatar"}
@@ -153,7 +146,7 @@ function App() {
         btnText = {"Да"}
         // isOpen = {isConfirmPopupOpen} открытие по клику на корзину карточки
         onClose = {closeAllPopups}
-        child = {null}
+        children = {null}
       />     
     </>
   );
